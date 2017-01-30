@@ -32,8 +32,9 @@ def process_csv_data(csv_data):
         county = row[0]
         precict = row[1]
         votes = row[7]
+        print county
         print precict
-        print
+        print votes
     return precinct_to_votes
 
 # class MainHandler(webapp2.RequestHandler):
