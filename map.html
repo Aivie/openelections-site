@@ -24,10 +24,24 @@
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.7128, lng: -73.93, zoom: 11},
-          zoom: 8
+          center: {lat: 40.7128, lng: -73.93},
+          zoom: 11
         });
-      }
+        map.data.loadGeoJson('https://data.cityofnewyork.us/api/geospatial/h2n3-98hq?method=export&format=GeoJSON');
+
+      var infowindow = new google.maps.InfoWindow({
+        pixelOffset: new google.maps.Size(10,-10),
+      });
+
+      map.data.addListener('click', function(event){
+        var electDist = event.feature.getProperty('elect_dist');
+
+        var content = 'Election District: ' + electDist + '<br>';
+        infowindow.setContent(content);
+        infowindow.setPosition(event.latLng);
+        infowindow.open(map);
+      });
+    }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxhUeARTFAAZGjWDA_WLLN0cc9OMbvQ-k&callback=initMap"
     async defer></script>
