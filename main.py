@@ -65,7 +65,7 @@ class PrecinctHandler(webapp2.RequestHandler):
         # TODO: Use PrecinctVotes.query() to get all precints and then append
         # to the results list as a dictionary (use to_dict())
         for precinct in PrecinctVotes.query():
-            
+            results.append(precinct.to_dict())
         self.response.out.write(json.dumps(results))
         self.response.headers.add_header('Content-Type', 'application/json')
 
