@@ -38,12 +38,11 @@
         var color = 'grey';
         if (electDist in distToVotes) {
           var distVotes = distToVotes[electDist].votes;
-
+          
           //TODO: Write code to choose candidate with most votes in this precinct.
-          var precinct_data = new Request('/precincts');
-          fetch(precinct_data).then(function(response) {
+          // var precinct_data = new Request('/precincts');
+          // for (var )
             // return Math.max(Math, response);
-            
           })
         }
 
@@ -65,6 +64,8 @@
         var electDist = event.feature.getProperty('elect_dist');
 
         var content = 'Election District: ' + electDist + '<br>';
+          // for
+
         infowindow.setContent(content);
         infowindow.setPosition(event.latLng);
         infowindow.open(map);
